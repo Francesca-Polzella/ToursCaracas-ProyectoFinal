@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatble" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta Cultural</title>
+    <link rel="icon" type="image/x-icon" href="/img/leon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/views/rutaHistorica/stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="Leaflet.AnimatedSearchBox.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #sidebar {
+            position: fixed;
+            top: 4rem;
+            right: 0;
+            width: 300px;
+            height: calc(100vh - 4rem);
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+        }
+        #sidebar.active {
+            transform: translateX(0);
+        }
+        .sidebar-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: black;
+        }
+        .description {
+            margin-top: 10px;
+            margin-left: 2px;
+        }
+        .info, .numero {
+            margin-top: 10px;
+            margin-left: 2px;
+            font-style: italic;
+        }
+        .info strong, .numero strong {
+            font-weight: bold;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .search-container input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        .search-container button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>  
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
+            <h1 class="text-2xl font-bold">Tours Caracas</h1>
+            <nav class="hidden md:flex space-x-8 overflow-x-auto items-center">
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/">Inicio</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaHistorica/">Sitios históricos</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaCultural/">Sitios culturales</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaGastronomica/">Sitios Gastronomico</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/noticias/">Noticias</a>
+                <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/login/">Login</a>
+                <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/registro/">Registro</a>
+            </nav>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 md:hidden text-black cursor-pointer p-2" stroke-width="2">
+                <path d="M4 6l16 0"></path>
+                <path d="M4 12l16 0"></path>
+                <path d="M4 18l16 0"></path>
+            </svg>
+        </div>
+    </header>
+
+    <div class="search-container mt-16 px-4">
+        <input type="text" id="searchInput" placeholder="Buscar lugar..." class="form-control">
+        <button onclick="searchPlace()" class="btn btn-primary">Buscar</button>
+    </div>
+    <div id="map" class="mt-4" style="height: calc(100vh - 8rem);"></div>
+    <div id="sidebar">
+        <ul id="sidebar-list">
+            <!-- Los elementos del menú se agregarán dinámicamente aquí -->
+        </ul>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-8 text-center">ToursCaracas 2025</footer>
+    <script src="Leaflet.AnimatedSearchBox.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="mapa.js"></script>
+</body>
+</html>

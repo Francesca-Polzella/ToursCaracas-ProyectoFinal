@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - Tours Caracas</title>
+    <link rel="icon" type="image/x-icon" href="/img/leon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
+            <h1 class="text-2xl font-bold">Tours Caracas</h1>
+            <nav class="hidden md:flex space-x-8 overflow-x-auto items-center">
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/">Inicio</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaHistorica/">Sitios históricos</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaCultural/">Sitios culturales</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaGastronomica/">Sitios Gastronomico</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/noticias/">Noticias</a>
+                <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/login/">Login</a>
+                <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/registro/">Registro</a>
+            </nav>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 md:hidden text-black cursor-pointer p-2" stroke-width="2">
+                <path d="M4 6l16 0"></path>
+                <path d="M4 12l16 0"></path>
+                <path d="M4 18l16 0"></path>
+            </svg>
+        </div>
+    </header>
+
+    <main class="mt-24 px-4">
+        <h2 class="text-3xl font-bold text-center my-8">Últimas Noticias</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <img src="https://via.placeholder.com/400x200" alt="Noticia 1" class="w-full h-48 object-cover rounded-t-lg">
+                <h3 class="text-xl font-bold mt-4">Título de la Noticia 1</h3>
+                <p class="text-gray-700 mt-2">Descripción breve de la noticia 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="#" class="text-blue-500 hover:underline mt-4 block">Leer más</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <img src="https://via.placeholder.com/400x200" alt="Noticia 2" class="w-full h-48 object-cover rounded-t-lg">
+                <h3 class="text-xl font-bold mt-4">Título de la Noticia 2</h3>
+                <p class="text-gray-700 mt-2">Descripción breve de la noticia 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="#" class="text-blue-500 hover:underline mt-4 block">Leer más</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg fade-in">
+                <img src="https://via.placeholder.com/400x200" alt="Noticia 3" class="w-full h-48 object-cover rounded-t-lg">
+                <h3 class="text-xl font-bold mt-4">Título de la Noticia 3</h3>
+                <p class="text-gray-700 mt-2">Descripción breve de la noticia 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="#" class="text-blue-500 hover:underline mt-4 block">Leer más</a>
+            </div>
+            <!-- Agrega más noticias según sea necesario -->
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 text-center mt-8">ToursCaracas 2025</footer>
+</body>
+</html>
