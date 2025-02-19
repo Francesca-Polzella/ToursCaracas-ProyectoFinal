@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Sitio - Tours Caracas</title>
+    <title>Agregar Sitio</title>
     <link rel="icon" type="image/x-icon" href="/img/leon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="/views/admin/alert.js" defer></script>
 </head>
 <body class="bg-gray-100">
     <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
         <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
-            <h1 class="text-2xl font-bold">Admin Dashboard</h1>
+            <h1 class="text-2xl font-bold">Admin ToursCaracas</h1>
             <nav class="hidden md:flex space-x-8 overflow-x-auto items-center">
                 <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/">Inicio</a>
                 <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaHistorica/">Sitios históricos</a>
@@ -28,13 +31,13 @@
                 <h2 class="text-xl font-bold">Menú de Administración</h2>
                 <ul class="mt-4">
                     <li class="mt-2">
-                        <a href="/admin" class="block py-2 px-4 rounded hover:bg-gray-700">Dashboard</a>
+                        <a href="/admin" class="block py-2 px-4 rounded hover:bg-gray-700">Principal</a>
                     </li>
                     <li class="mt-2">
                         <a href="/editar" class="block py-2 px-4 rounded hover:bg-gray-700">Editar Sitios</a>
                     </li>
                     <li class="mt-2">
-                        <a href="/nuevo" class="block py-2 px-4 rounded hover:bg-gray-700">Agregar Sitio</a>
+                        <a href="/nuevo" class="block py-2 px-4 rounded hover:bg-gray-700">Agregar Sitios</a>
                     </li>
                 </ul>
             </div>
@@ -42,7 +45,7 @@
 
         <!-- Main content -->
         <main class="flex-1 ml-64 p-6">
-            <h2 class="text-3xl font-bold mb-6">Agregar Sitio</h2>
+            <h2 class="text-3xl font-bold mb-6">Agregar Sitios</h2>
             <form id="addForm" class="bg-white p-6 rounded-lg shadow-lg">
                 <div class="mb-4">
                     <label for="nombre" class="block text-gray-700 font-bold mb-2">Nombre del Sitio:</label>
@@ -68,12 +71,15 @@
                     <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Agregar Sitio</button>
                 </div>
             </form>
+            <div id="sitioList"></div>
+            <div id="map"></div> Contenedor del mapa
         </main>
     </div>
 
     <footer class="bg-gray-800 text-white py-8 text-center mt-8">ToursCaracas 2025</footer>
 
-    <script src="alert.js"></script>
-    <script src="nuevo.js"></script>
+    <script src="/views/admin/nuevo.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </body>
 </html>

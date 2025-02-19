@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function() {
 // Configuración del mapa
 var map = L.map('map').setView([10.488, -66.8792], 12);
 
@@ -165,7 +166,7 @@ function searchPlace() {
 }
 
 // ...existing code...
-
+})
 
 
 
