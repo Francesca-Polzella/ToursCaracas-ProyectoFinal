@@ -48,14 +48,15 @@ app.post('/api/sitios/nuevo', (req, res) => {
     const sitio = req.body;
     // Aquí puedes agregar la lógica para guardar el sitio en la base de datos
     // Por ejemplo:
-    // Sitio.create(sitio, (err, newSitio) => {
-    //     if (err) {
-    //         return res.status(500).json({ success: false, message: 'Error al agregar el sitio' });
-    //     }
-    //     res.status(201).json({ success: true, data: newSitio });
-    // });
+    sitio.create(sitio, (err, newSitio) => {
+        if (err) {
+            return res.status(500).json({ success: false, message: 'Error al agregar el sitio' });
+        }
+        res.status(201).json({ success: true, data: newSitio });
+    });
     res.status(201).json({ success: true, data: sitio });
 });
+
 
 module.exports = app;
 

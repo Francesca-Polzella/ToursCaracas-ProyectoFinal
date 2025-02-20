@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configuración del mapa
     var map = L.map('map').setView([10.488, -66.8792], 12);
 
+    // Capa del mapa
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         minZoom: 10,
         maxZoom: 20,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    //imagen del mapa 
 
     // Coordenadas de los sitios históricos y marcadores
     var sitios = [
