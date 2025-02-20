@@ -71,40 +71,40 @@ formulario.addEventListener('submit', async (e) => {
     }
 });
 
-// // Autenticar al administrador
-// document.getElementById('formulario').addEventListener('submit', function(event) {
-//     event.preventDefault();
+// Autenticar al administrador
+document.getElementById('formulario').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-//     const email = document.getElementById('Correo-login').value;
-//     const password = document.getElementById('Contraseña-login').value;
+    const email = document.getElementById('Correo-login').value;
+    const password = document.getElementById('Contraseña-login').value;
 
-//     // Credenciales únicas
-//     const adminEmail = 'admin@example.com';
-//     const adminPassword = 'Admin123';
+    // Credenciales únicas
+    const adminEmail = 'admin@example.com';
+    const adminPassword = 'Admin123';
 
-//     if (email === adminEmail && password === adminPassword) {
-//         // Guardar la información de autenticación en el almacenamiento local
-//         localStorage.setItem('isAuthenticated', 'true');
-//         // Redirigir a la página de administrador
-//         window.location.href = '/admin/index.html'; // Cambia esta ruta a la correcta
-//     } else {
-//         document.getElementById('text-error').textContent = 'Correo o contraseña incorrectos.';
-//     }
-// });
-const listadoArray= response.data.data
-const usuario =listadoArray.some(User=>User.Email===Email && User.Password===Password)
-if(!usuario){
-    if(listadoArray.some(User=>email===email)){
-        const lista =listadoArray.map(User=>{
-            if(User.email===email){
-                if (User.rol==='admin'){
-                    window.location.href='/admin/index.html'
-                }else{
-                    window.location.href ='/dashboard/'
-                }
-            }else{
-                return User
-            }
-        })
+    if (email === adminEmail && password === adminPassword) {
+        // Guardar la información de autenticación en el almacenamiento local
+        localStorage.setItem('isAuthenticated', 'true');
+        // Redirigir a la página de administrador
+        window.location.href = '/admin/index.html'; // Cambia esta ruta a la correcta
+    } else {
+        document.getElementById('text-error').textContent = 'Correo o contraseña incorrectos.';
     }
-}
+});
+// const listadoArray= response.data.data
+// const usuario =listadoArray.some(User=>User.Email===Email && User.Password===Password)
+// if(!usuario){
+//     if(listadoArray.some(User=>email===email)){
+//         const lista =listadoArray.map(User=>{
+//             if(User.email===email){
+//                 if (User.rol==='admin'){
+//                     window.location.href='/admin/index.html'
+//                 }else{
+//                     window.location.href ='/dashboard/'
+//                 }
+//             }else{
+//                 return User
+//             }
+//         })
+//     }
+// }
