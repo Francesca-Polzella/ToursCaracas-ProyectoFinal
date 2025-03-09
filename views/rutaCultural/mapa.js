@@ -147,8 +147,8 @@ document.addEventListener('click', function(event) {
 
 // ...existing code...
 
-// Función para buscar un lugar y hacer zoom a su coordenada
-function searchPlace() {
+  // Función para buscar un lugar y hacer zoom a su coordenada
+  function searchPlace() {
     var searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
     var found = false;
 
@@ -164,9 +164,8 @@ function searchPlace() {
         alert('Lugar no encontrado');
     }
 }
+});
 
-// ...existing code...
-})
 
 
 

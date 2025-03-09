@@ -8,6 +8,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const userRouter = require('./controladores/users');
+const sitioRouter = require('./controladores/sitios');
+// Corregir esta línea:
+const Sitio = require('./modelo/sitios');  // Cambiado de '../modelo/sitios' a './modelo/sitios'
 
 try {
     mongoose.connect(process.env.MONGO_URI_TEST);
@@ -42,21 +45,7 @@ app.use(morgan('tiny'));
 
 // Rutas para backend
 app.use('/api/users', userRouter);
-
-// Ruta para agregar un nuevo sitio
-app.post('/api/sitios/nuevo', (req, res) => {
-    const sitio = req.body;
-    // Aquí puedes agregar la lógica para guardar el sitio en la base de datos
-    // Por ejemplo:
-    sitio.create(sitio, (err, newSitio) => {
-        if (err) {
-            return res.status(500).json({ success: false, message: 'Error al agregar el sitio' });
-        }
-        res.status(201).json({ success: true, data: newSitio });
-    });
-    res.status(201).json({ success: true, data: sitio });
-});
-
+app.use('/api/sitios', sitioRouter);
 
 module.exports = app;
 
