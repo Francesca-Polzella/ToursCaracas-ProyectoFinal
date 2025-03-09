@@ -19,6 +19,7 @@
 <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
     <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
         <h1 class="text-2xl font-bold">Tours Caracas</h1>
+        <!-- Desktop Navigation -->
         <nav class="hidden md:flex space-x-8 overflow-x-auto items-center">
             <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/">Inicio</a>
             <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaHistorica/">Sitios históricos</a>
@@ -28,13 +29,48 @@
             <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/login/">Login</a>
             <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/registro/">Registro</a>
         </nav>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 md:hidden text-black cursor-pointer p-2" stroke-width="2">
-            <path d="M4 6l16 0"></path>
-            <path d="M4 12l16 0"></path>
-            <path d="M4 18l16 0"></path>
-        </svg>
+        <!-- Mobile Menu Button -->
+        <button id="menuBtn" class="md:hidden focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-black cursor-pointer p-2" stroke-width="2">
+                <path d="M4 6l16 0"></path>
+                <path d="M4 12l16 0"></path>
+                <path d="M4 18l16 0"></path>
+            </svg>
+        </button>
+    </div>
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white w-full">
+        <div class="px-4 py-2 space-y-3">
+            <a class="block text-gray-700 hover:text-red-900 py-2" href="/">Inicio</a>
+            <a class="block text-gray-700 hover:text-red-900 py-2" href="/rutaHistorica/">Sitios históricos</a>
+            <a class="block text-gray-700 hover:text-red-900 py-2" href="/rutaCultural/">Sitios culturales</a>
+            <a class="block text-gray-700 hover:text-red-900 py-2" href="/rutaGastronomica/">Sitios Gastronomico</a>
+            <a class="block text-gray-700 hover:text-red-900 py-2" href="/noticias/">Noticias</a>
+            <a class="block text-black font-bold py-2" href="/login/">Login</a>
+            <a class="block text-black font-bold py-2" href="/registro/">Registro</a>
+        </div>
     </div>
 </header>
+
+<!-- Add this script before the closing body tag -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    });
+</script>
 
 <main class="pt-16">
     <div id="carouselExampleIndicators" class="carousel slide">

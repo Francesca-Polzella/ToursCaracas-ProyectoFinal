@@ -92,11 +92,27 @@
                 <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/login/">Login</a>
                 <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/registro/">Registro</a>
             </nav>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 md:hidden text-black cursor-pointer p-2" stroke-width="2">
-                <path d="M4 6l16 0"></path>
-                <path d="M4 12l16 0"></path>
-                <path d="M4 18l16 0"></path>
-            </svg>
+            <!-- Replace the SVG button with this button element -->
+            <button id="menuBtn" class="md:hidden focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-black cursor-pointer p-2" stroke-width="2">
+                    <path d="M4 6l16 0"></path>
+                    <path d="M4 12l16 0"></path>
+                    <path d="M4 18l16 0"></path>
+                </svg>
+            </button>
+            </div>
+            <!-- Add the mobile menu panel right after the div -->
+            <div id="mobileMenu" class="hidden md:hidden bg-white w-full">
+                <div class="px-4 py-2 space-y-3">
+                    <a class="block text-gray-700 hover:text-red-900 py-2" href="/">Inicio</a>
+                    <a class="block text-gray-700 hover:text-red-900 py-2" href="/rutaHistorica/">Sitios históricos</a>
+                    <a class="block text-gray-700 hover:text-red-900 py-2" href="/rutaCultural/">Sitios culturales</a>
+                    <!-- <a class="block text-gray-700 hover:text-red-900 py-2" href="/rutaGastronomica/">Sitios Gastronomico</a> -->
+                    <a class="block text-gray-700 hover:text-red-900 py-2" href="/noticias/">Noticias</a>
+                    <a class="block text-black font-bold py-2" href="/login/">Login</a>
+                    <a class="block text-black font-bold py-2" href="/registro/">Registro</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -117,5 +133,56 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="/views/rutaGastronomica/mapa.js"></script>
+    <style>
+        /* Add these styles to your existing style section */
+        #mobileMenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 40;
+        }
+        #mobileMenu .px-4 {
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+        #mobileMenu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+        }
+        #mobileMenu a:hover {
+            background-color: #f3f4f6;
+            padding-left: 1.5rem;
+        }
+    </style>
+    <!-- Replace the existing mobile menu script with this corrected version -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+    
+            menuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+    
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+    
+            // Close menu when clicking a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
