@@ -57,54 +57,34 @@ function validar(input, val) {
 // Arreglar el botón de registro y las líneas de la casilla de correo
 formulario.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
     if (datoslogin.email && datoslogin.password) {
         try {
-            const response = await axios.get('/api/users/lista-user/', datoslogin);
-            console.log(response.data);
-            console.log('hola front');
+            const response = await axios.post('/api/users/login', {
+                email: datoslogin.email,
+                password: datoslogin.password
+            });
+
+            if (response.data.success) {
+                // Guardar el token en localStorage
+                localStorage.setItem('token', response.data.token);
+                
+                // Verificar el rol del usuario y redirigir
+                if (response.data.user.rol === 'admin') {
+                    window.location.href = '/admin/index.html';
+                } else {
+                    window.location.href = '/dashboard/';
+                }
+            } else {
+                document.getElementById('text-error').textContent = 'Credenciales inválidas';
+            }
         } catch (error) {
-            console.error(error);
-            alert('Error: ' + error.message);
+            console.error('Error de inicio de sesión:', error);
+            document.getElementById('text-error').textContent = 'Error al iniciar sesión. Por favor, intente nuevamente.';
         }
     } else {
-        console.log('Error: Missing email or password');
+        document.getElementById('text-error').textContent = 'Por favor, ingrese correo y contraseña';
     }
 });
 
-// Autenticar al administrador
-document.getElementById('formulario').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const email = document.getElementById('Correo-login').value;
-    const password = document.getElementById('Contraseña-login').value;
-
-    // Credenciales únicas
-    const adminEmail = 'admin@example.com';
-    const adminPassword = 'Admin123';
-
-    if (email === adminEmail && password === adminPassword) {
-        // Guardar la información de autenticación en el almacenamiento local
-        localStorage.setItem('isAuthenticated', 'true');
-        // Redirigir a la página de administrador
-        window.location.href = '/admin/index.html'; // Cambia esta ruta a la correcta
-    } else {
-        document.getElementById('text-error').textContent = 'Correo o contraseña incorrectos.';
-    }
-});
-// const listadoArray= response.data.data
-// const usuario =listadoArray.some(User=>User.Email===Email && User.Password===Password)
-// if(!usuario){
-//     if(listadoArray.some(User=>email===email)){
-//         const lista =listadoArray.map(User=>{
-//             if(User.email===email){
-//                 if (User.rol==='admin'){
-//                     window.location.href='/admin/index.html'
-//                 }else{
-//                     window.location.href ='/dashboard/'
-//                 }
-//             }else{
-//                 return User
-//             }
-//         })
-//     }
-// }
+// Eliminar o comentar el otro event listener duplicado
