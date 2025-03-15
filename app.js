@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const userRouter = require('./controladores/users');
 const sitioRouter = require('./controladores/sitios');
-// Corregir esta línea:
+const adminRouter = require('./routes/admin');
 const Sitio = require('./modelo/sitios');  // Cambiado de '../modelo/sitios' a './modelo/sitios'
 
 try {
@@ -19,10 +19,20 @@ try {
     console.log(error);
 }
 
-// Configura la carpeta 'public' para servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
+// Mover estos middlewares antes de las rutas
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(cookieParser());
+app.use(morgan('tiny'));
 
-// Rutas de frontend
+// Rutas estáticas después de los middlewares
+app.use(express.static('public'));
+app.use(express.static(__dirname));
 app.use('/', express.static(path.resolve(__dirname, 'views', 'home')));
 app.use('/img', express.static(path.resolve(__dirname, 'views', 'img')));
 app.use('/componentes', express.static(path.resolve(__dirname, 'views', 'componentes')));
@@ -37,15 +47,19 @@ app.use('/estilos', express.static(path.resolve(__dirname, 'views', 'estilos')))
 app.use('/admin', express.static(path.resolve(__dirname, 'views', 'admin')));
 app.use('/editar', express.static(path.resolve('views', 'admin', 'editar.html')));
 app.use('/nuevo', express.static(path.resolve('views', 'admin', 'nuevo.html')));
-
+app.use(express.static('views'));
 app.use(express.json()); // importante colocar el json
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:4000',
+    credentials: true
+}));
 app.use(cookieParser());
 app.use(morgan('tiny'));
 
 // Rutas para backend
 app.use('/api/users', userRouter);
 app.use('/api/sitios', sitioRouter);
-
+app.use('/api/admin', adminRouter); // Eliminar la duplicación
+app.use('/api/admin', adminRouter);
 module.exports = app;
 

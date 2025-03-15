@@ -1,103 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador - Tours Caracas</title>
-    <link rel="icon" type="image/x-icon" href="/img/leon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
-    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
-            <h1 class="text-2xl font-bold">Admin ToursCaracas</h1>
-            <nav class="hidden md:flex space-x-8 overflow-x-auto items-center">
-                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/">Inicio</a>
-                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaHistorica/">Sitios históricos</a>
-                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaCultural/">Sitios culturales</a>
-                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaGastronomica/">Sitios Gastronomico</a>
-                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/noticias/">Noticias</a>
-                <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/login/">Login</a>
-                <a class="text-black font-bold py-2 px-4 hover:bg-blue-700 rounded-lg transition ease-in-out" href="/registro/">Registro</a>
-            </nav>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 md:hidden text-black cursor-pointer p-2" stroke-width="2">
-                <path d="M4 6l16 0"></path>
-                <path d="M4 12l16 0"></path>
-                <path d="M4 18l16 0"></path>
-            </svg>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold">Admin ToursCaracas</div>
+                <div class="flex gap-4">
+                    <a href="/views/home/index.html" class="text-black">Inicio</a>
+                    <a href="/views/rutaHistorica/index.html" class="text-black">Sitios históricos</a>
+                    <a href="/views/rutaCultural/index.html" class="text-black">Sitios culturales</a>
+                    <a href="/views/rutaGastronomica/index.html" class="text-black">Sitios Gastronómicos</a>
+                    <a href="/views/noticias/index.html" class="text-black">Noticias</a>
+                    <button id="logoutBtn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <div class="flex flex-1 mt-16">
+    <div class="flex">
         <!-- Sidebar -->
-        <aside class="w-64 bg-gray-800 text-white h-screen fixed">
+        <div class="w-64 bg-gray-800 text-white min-h-screen fixed left-0 top-16">
             <div class="p-4">
-                <h2 class="text-xl font-bold">Menú de Administración</h2>
-                <ul class="mt-4">
-                    <li class="mt-2">
-                        <a href="/index" class="block py-2 px-4 rounded hover:bg-gray-700">Principal</a>
-                    </li>
-                    <li class="mt-2">
-                        <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Usuarios</a>
-                    </li>
-                    <li class="mt-2">
-                        <a href="/editar" class="block py-2 px-4 rounded hover:bg-gray-700"> Sitios Históricos</a>
-                    </li>
-                    <li class="mt-2">
-                        <a href="/editar" class="block py-2 px-4 rounded hover:bg-gray-700"> Sitios Culturales</a>
-                    </li>
-                    <li class="mt-2">
-                        <a href="/editar" class="block py-2 px-4 rounded hover:bg-gray-700"> Sitios Gastronómicos</a>
-                    </li>
-                    <li class="mt-2">
-                        <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Noticias</a>
-                    </li>
-                    <li class="mt-2">
-                        <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Configuración</a>
-                    </li>
+                <h2 class="text-lg font-semibold mb-4">Menú de Administración</h2>
+                <ul class="space-y-2">
+                    <li><a href="/views/admin/index.html" class="block py-2 px-4 hover:bg-gray-700">Principal</a></li>
+                    <li><a href="/views/admin/" class="block py-2 px-4 hover:bg-gray-700">Usuarios</a></li>
+                    <li><a href="/views/admin/historia/index.html" class="block py-2 px-4 hover:bg-gray-700">Sitios Históricos</a></li>
+                    <li><a href="/views/admin/cultural/index.html" class="block py-2 px-4 hover:bg-gray-700">Sitios Culturales</a></li>
+                    <li><a href="/views/admin/gastronomia/index.html" class="block py-2 px-4 hover:bg-gray-700">Sitios Gastronómicos</a></li>
+                    <li><a href="#" class="block py-2 px-4 hover:bg-gray-700">Noticias</a></li>
                 </ul>
             </div>
-        </aside>
+        </div>
 
-        <!-- Main content -->
-        <main class="flex-1 ml-64 p-6">
-            <h2 class="text-3xl font-bold mb-6">Administración</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold">Usuarios Registrados</h3>
-                    <p class="text-gray-700 mt-2">Total: 150</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold">Sitios Históricos</h3>
-                    <p class="text-gray-700 mt-2">Total: 11</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold">Sitios Culturales</h3>
-                    <p class="text-gray-700 mt-2">Total: 13 </p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold">Sitios Gastronómicos</h3>
-                    <p class="text-gray-700 mt-2">Total: 6</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold">Noticias Publicadas</h3>
-                    <p class="text-gray-700 mt-2">Total: 5</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold">Configuraciones</h3>
-                    <p class="text-gray-700 mt-2">Ajustes del sistema</p>
+        <!-- Main Content -->
+        <div class="ml-64 p-8 pt-20">
+            <!-- Dashboard Section -->
+            <div id="dashboard-section">
+                <h1 class="text-2xl font-bold mb-6">Administración</h1>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-xl font-bold mb-4">Usuarios Registrados</h2>
+                        <p>Total: <span id="userCount">150</span></p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-xl font-bold mb-4">Sitios Históricos</h2>
+                        <p>Total: <span id="historicCount">11</span></p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-xl font-bold mb-4">Sitios Culturales</h2>
+                        <p>Total: <span id="culturalCount">13</span></p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-xl font-bold mb-4">Sitios Gastronómicos</h2>
+                        <p>Total: <span id="gastronomicCount">6</span></p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-xl font-bold mb-4">Noticias Publicadas</h2>
+                        <p>Total: <span id="newsCount">5</span></p>
+                    </div>
                 </div>
             </div>
-        </main>
+
+            <!-- Historical Sites Section -->
+            <div id="historic-section" class="hidden">
+                <h2 class="text-3xl font-bold mb-6">Editar Sitios Históricos</h2>
+                <form id="editForm" class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="mb-4">
+                        <label for="nombre" class="block text-gray-700 font-bold mb-2">Nombre del Sitio:</label>
+                        <input type="text" id="nombre" name="nombre" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Nombre del sitio">
+                    </div>
+                    <div class="mb-4">
+                        <label for="descripcion" class="block text-gray-700 font-bold mb-2">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Descripción del sitio"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="info" class="block text-gray-700 font-bold mb-2">Información:</label>
+                        <input type="text" id="info" name="info" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Información del sitio">
+                    </div>
+                    <div class="mb-4">
+                        <label for="numero" class="block text-gray-700 font-bold mb-2">Número de Contacto:</label>
+                        <input type="text" id="numero" name="numero" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Número de contacto">
+                    </div>
+                    <div class="mb-4">
+                        <label for="coords" class="block text-gray-700 font-bold mb-2">Coordenadas:</label>
+                        <input type="text" id="coords" name="coords" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Coordenadas del sitio">
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Editar Sitio</button>
+                    </div>
+                </form>
+                <div id="sitioList" class="mt-6"></div>
+            </div>
+        </div>
     </div>
 
-    <footer class="bg-gray-800 text-white py-8 text-center mt-auto">ToursCaracas 2025</footer>
+    <footer class="bg-gray-800 text-white text-center py-4 fixed bottom-0 w-full">
+        <p>ToursCaracas 2025</p>
+    </footer>
 
-    <script>
-        // Verificar si el usuario está autenticado
-        if (localStorage.getItem('isAuthenticated') !== 'true') {
-            window.location.href = '/login/'; // Cambia esta ruta a la correcta
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>

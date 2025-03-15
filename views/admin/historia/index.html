@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Sitios Históricos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">Gestión de Sitios Históricos</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Card para Editar Sitios -->
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-bold mb-4">Editar Sitios</h2>
+                <p class="text-gray-600 mb-6">Modifica la información de los sitios históricos existentes.</p>
+                <a href="./editar.html" class="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                    Ir a Editar
+                </a>
+            </div>
+
+            <!-- Card para Agregar Sitios -->
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <h2 class="text-2xl font-bold mb-4">Agregar Nuevo Sitio</h2>
+                <p class="text-gray-600 mb-6">Añade un nuevo sitio histórico a la base de datos.</p>
+                <a href="./nuevo.html" class="inline-block bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors">
+                    Ir a Crear
+                </a>
+            </div>
+        </div>
+
+        <!-- Botón para volver al dashboard -->
+        <div class="text-center mt-8">
+            <a href="/views/admin/index.html" class="inline-block bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
+                Volver al Dashboard
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Verificación de autenticación
+        (async function() {
+            const adminToken = localStorage.getItem('adminToken');
+            const isAdmin = localStorage.getItem('isAdmin');
+            
+            if (!adminToken || isAdmin !== 'true') {
+                window.location.replace('/views/login/index.html');
+            }
+        })();
+    </script>
+</body>
+</html>

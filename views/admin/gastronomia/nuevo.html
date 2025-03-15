@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Sitio</title>
+    <title>Agregar Nuevo Sitio</title>
     <link rel="icon" type="image/x-icon" href="/img/leon.png">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="/styles/styles.css">
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="/views/admin/alert.js" defer></script>
 </head>
 <body class="bg-gray-100">
@@ -31,13 +29,13 @@
                 <h2 class="text-xl font-bold">Menú de Administración</h2>
                 <ul class="mt-4">
                     <li class="mt-2">
-                        <a href="/admin" class="block py-2 px-4 rounded hover:bg-gray-700">Principal</a>
+                        <a href="/views/admin/index.html" class="block py-2 px-4 rounded hover:bg-gray-700">Principal</a>
                     </li>
                     <li class="mt-2">
-                        <a href="/editar" class="block py-2 px-4 rounded hover:bg-gray-700">Editar Sitios</a>
+                        <a href="/views/admin/historia/editar.html" class="block py-2 px-4 rounded hover:bg-gray-700">Editar Sitios</a>
                     </li>
                     <li class="mt-2">
-                        <a href="/nuevo" class="block py-2 px-4 rounded hover:bg-gray-700">Agregar Sitios</a>
+                        <a href="/views/admin/historia/nuevo.html" class="block py-2 px-4 rounded hover:bg-gray-700">Agregar Sitios</a>
                     </li>
                 </ul>
             </div>
@@ -45,41 +43,38 @@
 
         <!-- Main content -->
         <main class="flex-1 ml-64 p-6">
-            <h2 class="text-3xl font-bold mb-6">Agregar Sitios</h2>
-            <form id="addForm" class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold mb-6">Agregar Nuevo Sitio Gastronómicos</h2>
+            <form id="newForm" class="bg-white p-6 rounded-lg shadow-lg">
                 <div class="mb-4">
                     <label for="nombre" class="block text-gray-700 font-bold mb-2">Nombre del Sitio:</label>
-                    <input type="text" id="nombre" name="nombre" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Nombre del sitio">
+                    <input type="text" id="nombre" name="nombre" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Nombre del sitio" required>
                 </div>
                 <div class="mb-4">
                     <label for="descripcion" class="block text-gray-700 font-bold mb-2">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Descripción del sitio"></textarea>
+                    <textarea id="descripcion" name="descripcion" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Descripción del sitio" required></textarea>
                 </div>
                 <div class="mb-4">
                     <label for="info" class="block text-gray-700 font-bold mb-2">Información:</label>
-                    <input type="text" id="info" name="info" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Información del sitio">
+                    <input type="text" id="info" name="info" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Información del sitio" required>
                 </div>
                 <div class="mb-4">
                     <label for="numero" class="block text-gray-700 font-bold mb-2">Número de Contacto:</label>
-                    <input type="text" id="numero" name="numero" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Número de contacto">
+                    <input type="text" id="numero" name="numero" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Número de contacto" required>
                 </div>
                 <div class="mb-4">
                     <label for="coords" class="block text-gray-700 font-bold mb-2">Coordenadas:</label>
-                    <input type="text" id="coords" name="coords" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Coordenadas del sitio">
+                    <input type="text" id="coords" name="coords" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Coordenadas del sitio" required>
                 </div>
                 <div class="flex justify-end">
-                    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Agregar Sitio</button>
+                    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-700">Agregar Sitio</button>
                 </div>
             </form>
-            <div id="sitioList"></div>
-            <div id="map"></div> Contenedor del mapa
         </main>
     </div>
 
     <footer class="bg-gray-800 text-white py-8 text-center mt-8">ToursCaracas 2025</footer>
 
-    <script src="/views/admin/nuevo.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <script src="/views/admin/nuevo.js" defer></script>
 </body>
 </html>

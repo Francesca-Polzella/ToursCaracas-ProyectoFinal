@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Sitio</title>
+    <link rel="icon" type="image/x-icon" href="/img/leon.png">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="/views/admin/alert.js" defer></script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
+            <h1 class="text-2xl font-bold">Admin ToursCaracas</h1>
+            <nav class="hidden md:flex space-x-8 overflow-x-auto items-center">
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/">Inicio</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaHistorica/">Sitios históricos</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaCultural/">Sitios culturales</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/rutaGastronomica/">Sitios Gastronomico</a>
+                <a class="text-gray-700 hover:text-red-900 transition ease-in-out" href="/noticias/">Noticias</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="flex mt-16">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white h-screen fixed">
+            <div class="p-4">
+                <h2 class="text-xl font-bold">Menú de Administración</h2>
+                <ul class="mt-4">
+                    <li class="mt-2">
+                        <a href="/views/admin/index.html" class="block py-2 px-4 rounded hover:bg-gray-700">Principal</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="/views/admin/historia/editar.html" class="block py-2 px-4 rounded hover:bg-gray-700">Editar Sitios</a>
+                    </li>
+                    <li class="mt-2">
+                        <a href="/views/admin/historia/nuevo.html" class="block py-2 px-4 rounded hover:bg-gray-700">Agregar Sitios</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="flex-1 ml-64 p-6">
+            <h2 class="text-3xl font-bold mb-6">Editar Sitios</h2>
+            <form id="editForm" class="bg-white p-6 rounded-lg shadow-lg">
+                <div class="mb-4">
+                    <label for="nombre" class="block text-gray-700 font-bold mb-2">Nombre del Sitio:</label>
+                    <input type="text" id="nombre" name="nombre" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Nombre del sitio">
+                </div>
+                <div class="mb-4">
+                    <label for="descripcion" class="block text-gray-700 font-bold mb-2">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Descripción del sitio"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="info" class="block text-gray-700 font-bold mb-2">Información:</label>
+                    <input type="text" id="info" name="info" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Información del sitio">
+                </div>
+                <div class="mb-4">
+                    <label for="numero" class="block text-gray-700 font-bold mb-2">Número de Contacto:</label>
+                    <input type="text" id="numero" name="numero" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Número de contacto">
+                </div>
+                <div class="mb-4">
+                    <label for="coords" class="block text-gray-700 font-bold mb-2">Coordenadas:</label>
+                    <input type="text" id="coords" name="coords" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Coordenadas del sitio">
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Editar Sitio</button>
+                </div>
+            </form>
+            <div id="sitioList"></div>
+        </main>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-8 text-center mt-8">ToursCaracas 2025</footer>
+
+    <script src="/views/admin/editar.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</body>
+</html>
